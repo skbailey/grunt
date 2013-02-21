@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     clean: {
-      build: ['build']
+      build: ['base', 'result.js']
     },
     coffee: {
       glob_to_multiple: {
@@ -28,12 +28,24 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    handlebars: {
+      compile: {
+        options: {
+          namespace: "JST"
+        },
+        files: {
+          "result.js": "first.handlebars"
+        }
+      }
     }
   });
 
-  //grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  
+  grunt.registerTask('default', ['clean', 'coffee', 'handlebars', 'requirejs']);
 
 };
