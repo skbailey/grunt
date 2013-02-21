@@ -3,8 +3,8 @@ require.config
     jquery: "https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min"
     underscore: "http://underscorejs.org/underscore"
     backbone: "http://backbonejs.org/backbone"
-    handlebars: "https://github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1"
-    templates: "templates"
+    # handlebars: "https://github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1"
+    # templates: "templates"
   shim:
     jquery:
       exports: "$"
@@ -15,9 +15,9 @@ require.config
       exports: "Backbone"   
     handlebars:
       exports: "Handlebars" 
-    templates: ["handlebars"]
+    # templates: ["handlebars"]
       
-require ["jquery", "backbone", "handlebars", "templates"], ($, Backbone, Handlebars) ->
+require ["jquery", "backbone"], ($, Backbone) ->
   $ ->
     $("#main").html window.JST["first.handlebars"] 
       title: "My Little Pony" 
